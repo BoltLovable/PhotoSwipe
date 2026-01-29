@@ -80,7 +80,7 @@
 /* Begin PBXNativeTarget section */
 		1A2B3C4D5E6F7890AB12CD2F /* PhotoSwift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1A2B3C4D5E6F7890AB12CD3E /* Build configuration list for PBXNativeTarget "PhotoSwift" */;
+			buildConfigurationList = 1A2B3C4D5E6F7890AB12CD41 /* Build configuration list for PBXNativeTarget "PhotoSwift" */;
 			buildPhases = (
 				1A2B3C4D5E6F7890AB12CD2C /* Sources */,
 				1A2B3C4D5E6F7890AB12CD2D /* Frameworks */,
@@ -344,7 +344,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1A2B3C4D5E6F7890AB12CD3E /* Build configuration list for PBXNativeTarget "PhotoSwift" */ = {
+		1A2B3C4D5E6F7890AB12CD41 /* Build configuration list for PBXNativeTarget "PhotoSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1A2B3C4D5E6F7890AB12CD3F /* Debug */,
