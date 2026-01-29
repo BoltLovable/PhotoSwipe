@@ -1,123 +1,123 @@
 # PhotoSwift
 
-A SwiftUI app for iOS 16+ that displays random photos from your photo library with swipe and button controls.
+Eine SwiftUI-App für iOS 16+, die zufällige Fotos aus deiner Fotobibliothek mit Wisch- und Button-Steuerungen anzeigt.
 
-## 🚀 Complete Beginner's Guide to Deploying This App
+## 🚀 komplette Anleitung für absolute Anfänger
 
-### Prerequisites
-- **Mac computer** with macOS (required for Xcode)
-- **Apple ID** (free Apple ID works, no paid developer account needed)
-- **iPhone/iPad** or iOS Simulator for testing
+### Was du brauchst
+- **Mac-Computer** mit macOS (wird für Xcode benötigt)
+- **Apple ID** (kostenlose Apple ID reicht, kein kostenpflichtiger Entwicklerkonto nötig)
+- **iPhone/iPad** oder iOS-Simulator zum Testen
 
-### Step 1: Install Xcode
-1. Open **App Store** on your Mac
-2. Search for "**Xcode**" (it's free)
-3. Click "**Get**" then "**Install**"
-4. Wait for installation (it's large, may take 30+ minutes)
-5. Launch Xcode from Applications folder
-6. Accept the license agreement when prompted
+### Schritt 1: Xcode installieren
+1. Öffne den **App Store** auf deinem Mac
+2. Suche nach "**Xcode**" (es ist kostenlos)
+3. Klicke auf "**Holen**" und dann auf "**Installieren**"
+4. Warte auf die Installation (es ist groß, kann 30+ Minuten dauern)
+5. Starte Xcode aus dem Programme-Ordner
+6. Akzeptiere die Lizenzvereinbarung, wenn du gefragt wirst
 
-### Step 2: Open the Project
-1. Navigate to the `PhotoSwift` folder on your computer
-2. Double-click `PhotoSwift.xcodeproj` (this opens Xcode)
-3. Xcode will load the project - you'll see the files on the left
+### Schritt 2: Projekt öffnen
+1. Navigiere zum `PhotoSwift`-Ordner auf deinem Computer
+2. Doppelklicke auf `PhotoSwift.xcodeproj` (das öffnet Xcode)
+3. Xcode lädt das Projekt - du siehst die Dateien links
 
-### Step 3: Connect Your Device (Optional but Recommended)
-**For iPhone/iPad:**
-1. Connect your iPhone/iPad to Mac with USB cable
-2. Unlock your device and tap "**Trust**" if prompted
-3. In Xcode, click the device name at top (next to "PhotoSwift")
-4. Select your connected device from the dropdown
+### Schritt 3: Gerät verbinden (Optional aber empfohlen)
+**Für iPhone/iPad:**
+1. Verbinde dein iPhone/iPad mit dem Mac per USB-Kabel
+2. Entsperre dein Gerät und tippe auf "**Vertrauen**", wenn gefragt
+3. In Xcode klicke auf den Gerätenamen oben (neben "PhotoSwift")
+4. Wähle dein verbundenes Gerät aus der Dropdown-Liste
 
-**For Simulator (if no device):**
-1. In Xcode, click the device name at top
-2. Select "**iPhone 15**" or any iOS Simulator from the dropdown
+**Für Simulator (wenn kein Gerät verfügbar):**
+1. In Xcode klicke auf den Gerätenamen oben
+2. Wähle "**iPhone 15**" oder einen anderen iOS-Simulator aus der Dropdown-Liste
 
-### Step 4: Build and Run the App
-1. Make sure your device/simulator is selected at the top
-2. Press **⌘ + R** (Command + R) or click the **Play button** ▶️
-3. Xcode will build the app (first time takes a few minutes)
-4. The app will automatically install and launch
+### Schritt 4: App bauen und starten
+1. Stelle sicher, dass dein Gerät/Simulator oben ausgewählt ist
+2. Drücke **⌘ + R** (Command + R) oder klicke auf den **Play-Button** ▶️
+3. Xcode baut die App (beim Mal dauert es einige Minuten)
+4. Die App wird automatisch installiert und gestartet
 
-### Step 5: Grant Photo Permissions
-1. When the app first opens, tap "**Grant Photo Access**"
-2. iOS will show a permission dialog - tap "**Allow**" or "**Select Photos**"
-3. Choose "**All Photos**" for the best experience
+### Schritt 5: Foto-Berechtigung erteilen
+1. Wenn die App zum ersten Mal öffnet, tippe auf "**Foto-Zugriff gewähren**"
+2. iOS zeigt einen Berechtigungsdialog - tippe auf "**Erlauben**" oder "**Fotos auswählen**"
+3. Wähle "**Alle Fotos**" für die beste Erfahrung
 
-### Step 6: Using the App
-- **Swipe Left** or tap ❌ to skip a photo (won't appear again)
-- **Swipe Right** or tap ✅ to delete a photo (goes to "Recently Deleted")
-- Deleted photos can be recovered from Photos app → "Recently Deleted" (30 days)
+### Schritt 6: App benutzen
+- **Nach links wischen** oder auf ❌ tippen, um ein Foto zu überspringen (erscheint nicht wieder)
+- **Nach rechts wischen** oder auf ✅ tippen, um ein Foto zu löschen (geht in "Kürzlich gelöscht")
+- Gelöschte Fotos können über Fotos-App → "Kürzlich gelöscht" wiederhergestellt werden (30 Tage)
 
-### Troubleshooting
-**"Build Failed" error:**
-- Make sure you selected a device/simulator at the top
-- Try **Product → Clean Build Folder** (⌘ + Shift + K)
-- Try building again
+### Fehlerbehebung
+**"Build Failed" Fehler:**
+- Stelle sicher, dass oben ein Gerät/Simulator ausgewählt ist
+- Versuche **Product → Clean Build Folder** (⌘ + Shift + K)
+- Versuche erneut zu bauen
 
-**"Photo Access Denied":**
-- Go to **Settings → PhotoSwift → Photos**
-- Change to "**All Photos**" or "**Selected Photos**"
+**"Foto-Zugriff verweigert":**
+- Gehe zu **Einstellungen → PhotoSwift → Fotos**
+- Ändere zu "**Alle Fotos**" oder "**Ausgewählte Fotos**"
 
-**App crashes:**
-- Make sure your iOS device is running iOS 16.0 or newer
-- Try using the iOS Simulator instead
+**App stürzt ab:**
+- Stelle sicher, dass dein iOS-Gerät iOS 16.0 oder neuer läuft
+- Versuche stattdessen den iOS-Simulator zu verwenden
 
 ---
 
-## Features
+## Funktionen
 
-- **Random Photo Display**: Shows a random image from your Photos library
-- **Swipe Gestures**: 
-  - Swipe left (or tap ❌) to skip the photo (won't appear again)
-  - Swipe right (or tap ✅) to delete the photo
-- **Persistent State**: Maintains a "seen" set using UserDefaults
-- **Photo Library Integration**: Full read-write access to Photos
-- **Haptic Feedback**: Light haptic feedback on actions
-- **Error Handling**: Clear error messages and alerts
+- **Zufällige Foto-Anzeige**: Zeigt ein zufälliges Bild aus deiner Fotos-Bibliothek
+- **Wisch-Gesten**: 
+  - Nach links wischen (oder ❌ tippen) um das Foto zu überspringen (erscheint nicht wieder)
+  - Nach rechts wischen (oder ✅ tippen) um das Foto zu löschen
+- **Dauerhafter Zustand**: Behält eine "gesehene" Menge mit UserDefaults
+- **Fotobibliothek-Integration**: Vollständiger Lese-Schreib-Zugriff auf Fotos
+- **Haptisches Feedback**: Leichte haptische Rückmeldung bei Aktionen
+- **Fehlerbehandlung**: Klare Fehlermeldungen und Warnungen
 
-## Requirements
+## Anforderungen
 
 - iOS 16.0+
 - Xcode 15.0+
-- Photo library access permission
+- Zugriffsberechtigung für Fotobibliothek
 
-## Architecture
+## Architektur
 
-The app follows a clean SwiftUI architecture with three main components:
+Die App folgt einer sauberen SwiftUI-Architektur mit drei Hauptkomponenten:
 
 ### PhotoLibraryService.swift
-- Handles photo library authorization and access
-- Manages asset loading and filtering
-- Maintains persistent "seen" state
-- Provides delete functionality
+- Verarbeitet Fotobibliothek-Autorisierung und Zugriff
+- Verwaltet Asset-Laden und Filterung
+- Behält dauerhaften "gesehen" Zustand
+- Bietet Lösch-Funktionalität
 
 ### ContentView.swift
-- Main UI with swipe gestures and buttons
-- Handles authorization states
-- Displays appropriate UI for different states
+- Haupt-UI mit Wisch-Gesten und Buttons
+- Verarbeitet Autorisierungszustände
+- Zeigt passende UI für verschiedene Zustände
 
 ### AssetImageView.swift
-- SwiftUI view for displaying PHAsset images
-- Handles image loading and caching
-- Provides loading states
+- SwiftUI-View zur Anzeige von PHAsset-Bildern
+- Verarbeitet Bild-Laden und Caching
+- Bietet Ladezustände
 
-## Usage
+## Verwendung
 
-1. Grant photo library access when prompted
-2. Swipe left or tap ❌ to skip photos
-3. Swipe right or tap ✅ to delete photos
-4. Deleted photos go to "Recently Deleted" in Photos
-5. Reset seen photos from the toolbar or when all photos are viewed
+1. Erteile Fotobibliothek-Zugriff, wenn du gefragt wirst
+2. Wische nach links oder tippe ❌ um Fotos zu überspringen
+3. Wische nach rechts oder tippe ✅ um Fotos zu löschen
+4. Gelöschte Fotos gehen zu "Kürzlich gelöscht" in Fotos
+5. Setze gesehene Fotos über die Toolbar zurück, wenn alle Fotos angesehen wurden
 
 ## Installation
 
-1. Clone this repository
-2. Open `PhotoSwift.xcodeproj` in Xcode
-3. Build and run on a device or simulator
+1. Klone dieses Repository
+2. Öffne `PhotoSwift.xcodeproj` in Xcode
+3. Bauen und starte auf einem Gerät oder Simulator
 
-## Privacy
+## Datenschutz
 
-- Photos are accessed only with explicit user permission
-- Deleted photos follow iOS standard behavior (go to Recently Deleted)
-- No data is transmitted outside the device
+- Fotos werden nur mit expliziter Benutzer-Erlaubnis zugegriffen
+- Gelöschte Fotos folgen dem iOS-Standardverhalten (gehen zu Kürzlich gelöscht)
+- Keine Daten werden außerhalb des Geräts übertragen
