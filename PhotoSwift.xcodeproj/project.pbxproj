@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A1234567890ABCD123456789 /* PhotoSwiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890ABCD123456788 /* PhotoSwiftApp.swift */; };
+		A1234567890ABCD123456796 /* PhotoSwiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890ABCD123456788 /* PhotoSwiftApp.swift */; };
 		A1234567890ABCD12345678A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890ABCD123456787 /* ContentView.swift */; };
 		A1234567890ABCD12345678C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1234567890ABCD12345678B /* Assets.xcassets */; };
 		A1234567890ABCD12345678F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1234567890ABCD12345678E /* Preview Assets.xcassets */; };
@@ -148,7 +148,7 @@
 				A1234567890ABCD12345678A /* ContentView.swift in Sources */,
 				A1234567890ABCD123456791 /* PhotoLibraryService.swift in Sources */,
 				A1234567890ABCD123456793 /* AssetImageView.swift in Sources */,
-				A1234567890ABCD123456789 /* PhotoSwiftApp.swift in Sources */,
+				A1234567890ABCD123456796 /* PhotoSwiftApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
