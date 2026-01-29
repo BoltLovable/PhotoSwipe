@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A2B3C4D5E6F7890AB12CD34 /* PhotoSwiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7890AB12CD33 /* PhotoSwiftApp.swift */; };
+		1A2B3C4D5E6F7890AB12CD33 /* PhotoSwiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7890AB12CD33 /* PhotoSwiftApp.swift */; };
 		1A2B3C4D5E6F7890AB12CD36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7890AB12CD35 /* ContentView.swift */; };
 		1A2B3C4D5E6F7890AB12CD38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7890AB12CD37 /* Assets.xcassets */; };
 		1A2B3C4D5E6F7890AB12CD3B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7890AB12CD3A /* Preview Assets.xcassets */; };
@@ -148,7 +148,7 @@
 				1A2B3C4D5E6F7890AB12CD36 /* ContentView.swift in Sources */,
 				1A2B3C4D5E6F7890AB12CD3D /* PhotoLibraryService.swift in Sources */,
 				1A2B3C4D5E6F7890AB12CD3F /* AssetImageView.swift in Sources */,
-				1A2B3C4D5E6F7890AB12CD34 /* PhotoSwiftApp.swift in Sources */,
+				1A2B3C4D5E6F7890AB12CD33 /* PhotoSwiftApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
