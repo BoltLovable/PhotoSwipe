@@ -1,0 +1,84 @@
+Build a minimal, modern iOS app using SwiftUI for current iOS standards.
+Target device: iPhone 15, iOS 26.1.
+The app will be tested locally in Xcode and the iOS Simulator.
+
+Purpose
+
+The app is a photo review utility with exactly one function:
+show random photos from the user’s photo library and allow keeping or deleting them.
+
+Permissions
+
+Request Photo Library access using the modern iOS Photos permission flow.
+
+Support both Full Access and Limited Access.
+
+Load all photos the app is allowed to access (no extra filtering).
+
+Core Behavior
+
+After permission is granted:
+
+Load all accessible images
+
+Randomly select one photo at a time
+
+Display the photo fullscreen, clean and distraction-free.
+
+User Interaction
+
+Swipe right → Keep
+
+The photo must never be shown again in the session.
+
+Swipe left → Delete
+
+Delete the photo using the Photos API so it ends up in “Recently Deleted”
+
+After each action, immediately show the next random photo.
+
+Buttons
+
+At the bottom of the screen, add two simple buttons:
+
+“Keep”
+
+“Delete”
+
+Buttons must trigger the same logic as swipe gestures.
+
+UI / UX
+
+No menus
+
+No navigation
+
+No settings
+
+No onboarding
+
+No animations beyond basic system gestures
+
+Very clean, modern, minimal design
+
+Dark-mode friendly
+
+Technical Notes
+
+Use SwiftUI
+
+Use Photos / PhotosUI framework
+
+Handle permission states safely
+
+Ensure the app does not crash if the library is empty or access is denied
+
+The app only needs to work locally (no App Store requirements)
+
+Output
+
+Provide complete SwiftUI code
+
+Code must compile and run
+
+Focus on correctness and simplicity over extra features

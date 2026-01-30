@@ -1,123 +1,88 @@
-# PhotoSwift
+# PhotoSwipe (lokal in Xcode)
 
-Eine SwiftUI-App für iOS 16+, die zufällige Fotos aus deiner Fotobibliothek mit Wisch- und Button-Steuerungen anzeigt.
+Dieses Repository enthält die SwiftUI-Quellcodes für eine minimalistische iOS-App zum schnellen Durchsehen von Fotos:
 
-## 🚀 komplette Anleitung für absolute Anfänger
+- Ein Foto wird zufällig angezeigt.
+- **Swipe rechts** = Behalten (in dieser Session nicht mehr anzeigen)
+- **Swipe links** = Löschen (landet in „Zuletzt gelöscht“)
+- Unten gibt es zusätzlich die Buttons **Keep** und **Delete**.
 
-### Was du brauchst
-- **Mac-Computer** mit macOS (wird für Xcode benötigt)
-- **Apple ID** (kostenlose Apple ID reicht, kein kostenpflichtiger Entwicklerkonto nötig)
-- **iPhone/iPad** oder iOS-Simulator zum Testen
+Die Dateien liegen unter `PhotoSwipeApp/`.
 
-### Schritt 1: Xcode installieren
-1. Öffne den **App Store** auf deinem Mac
-2. Suche nach "**Xcode**" (es ist kostenlos)
-3. Klicke auf "**Holen**" und dann auf "**Installieren**"
-4. Warte auf die Installation (es ist groß, kann 30+ Minuten dauern)
-5. Starte Xcode aus dem Programme-Ordner
-6. Akzeptiere die Lizenzvereinbarung, wenn du gefragt wirst
+## Voraussetzungen
 
-### Schritt 2: Projekt öffnen
-1. Navigiere zum `PhotoSwift`-Ordner auf deinem Computer
-2. Doppelklicke auf `PhotoSwift.xcodeproj` (das öffnet Xcode)
-3. Xcode lädt das Projekt - du siehst die Dateien links
+- macOS mit Xcode (aktuelles Xcode empfohlen)
+- iOS Simulator oder echtes Gerät
+- Zugriff auf die Fotos-App (es werden iOS-Privacy-Keys benötigt, siehe unten)
 
-### Schritt 3: Gerät verbinden (Optional aber empfohlen)
-**Für iPhone/iPad:**
-1. Verbinde dein iPhone/iPad mit dem Mac per USB-Kabel
-2. Entsperre dein Gerät und tippe auf "**Vertrauen**", wenn gefragt
-3. In Xcode klicke auf den Gerätenamen oben (neben "PhotoSwift")
-4. Wähle dein verbundenes Gerät aus der Dropdown-Liste
+## Projekt in Xcode anlegen
 
-**Für Simulator (wenn kein Gerät verfügbar):**
-1. In Xcode klicke auf den Gerätenamen oben
-2. Wähle "**iPhone 15**" oder einen anderen iOS-Simulator aus der Dropdown-Liste
+1. **Neues Xcode Projekt erstellen**
 
-### Schritt 4: App bauen und starten
-1. Stelle sicher, dass dein Gerät/Simulator oben ausgewählt ist
-2. Drücke **⌘ + R** (Command + R) oder klicke auf den **Play-Button** ▶️
-3. Xcode baut die App (beim Mal dauert es einige Minuten)
-4. Die App wird automatisch installiert und gestartet
+   - Xcode öffnen
+   - `File` -> `New` -> `Project...`
+   - Template: **iOS** -> **App**
+   - Einstellungen:
+     - **Interface**: SwiftUI
+     - **Language**: Swift
 
-### Schritt 5: Foto-Berechtigung erteilen
-1. Wenn die App zum ersten Mal öffnet, tippe auf "**Foto-Zugriff gewähren**"
-2. iOS zeigt einen Berechtigungsdialog - tippe auf "**Erlauben**" oder "**Fotos auswählen**"
-3. Wähle "**Alle Fotos**" für die beste Erfahrung
+2. **Swift-Dateien aus diesem Repo hinzufügen**
 
-### Schritt 6: App benutzen
-- **Nach links wischen** oder auf ❌ tippen, um ein Foto zu überspringen (erscheint nicht wieder)
-- **Nach rechts wischen** oder auf ✅ tippen, um ein Foto zu löschen (geht in "Kürzlich gelöscht")
-- Gelöschte Fotos können über Fotos-App → "Kürzlich gelöscht" wiederhergestellt werden (30 Tage)
+   - In Xcode im Project Navigator rechtsklick auf den Projektnamen -> `Add Files to "<Projektname>"...`
+   - Den Ordner `PhotoSwipeApp/` auswählen
+   - Wichtig:
+     - **"Copy items if needed"** aktivieren
+     - Sicherstellen, dass die Dateien dem **App Target** hinzugefügt werden
 
-### Fehlerbehebung
-**"Build Failed" Fehler:**
-- Stelle sicher, dass oben ein Gerät/Simulator ausgewählt ist
-- Versuche **Product → Clean Build Folder** (⌘ + Shift + K)
-- Versuche erneut zu bauen
+3. **App Entry sicherstellen**
 
-**"Foto-Zugriff verweigert":**
-- Gehe zu **Einstellungen → PhotoSwift → Fotos**
-- Ändere zu "**Alle Fotos**" oder "**Ausgewählte Fotos**"
+   In einem SwiftUI-Projekt gibt es normalerweise bereits eine `App`-Datei (z.B. `<Projektname>App.swift`).
 
-**App stürzt ab:**
-- Stelle sicher, dass dein iOS-Gerät iOS 16.0 oder neuer läuft
-- Versuche stattdessen den iOS-Simulator zu verwenden
+   - Entweder du nutzt die bereits generierte Datei und setzt deren Root-View auf `ContentView()`.
+   - Oder du nutzt die `PhotoSwipeApp.swift` aus diesem Repo.
 
----
+   Wichtig ist: Es darf am Ende nur **ein** `@main` App-Entry im Target geben.
 
-## Funktionen
+## Info.plist / Privacy Permissions
 
-- **Zufällige Foto-Anzeige**: Zeigt ein zufälliges Bild aus deiner Fotos-Bibliothek
-- **Wisch-Gesten**: 
-  - Nach links wischen (oder ❌ tippen) um das Foto zu überspringen (erscheint nicht wieder)
-  - Nach rechts wischen (oder ✅ tippen) um das Foto zu löschen
-- **Dauerhafter Zustand**: Behält eine "gesehene" Menge mit UserDefaults
-- **Fotobibliothek-Integration**: Vollständiger Lese-Schreib-Zugriff auf Fotos
-- **Haptisches Feedback**: Leichte haptische Rückmeldung bei Aktionen
-- **Fehlerbehandlung**: Klare Fehlermeldungen und Warnungen
+Damit iOS den Zugriff auf die Fotomediathek erlaubt, musst du in deinem Xcode-Projekt die Privacy-Keys setzen.
 
-## Anforderungen
+Öffne dazu in Xcode deine `Info.plist` (oder unter Target -> `Info` -> `Custom iOS Target Properties`) und füge hinzu:
 
-- iOS 16.0+
-- Xcode 15.0+
-- Zugriffsberechtigung für Fotobibliothek
+- `Privacy - Photo Library Usage Description` (`NSPhotoLibraryUsageDescription`)
+  - Beispiel: `Die App zeigt zufällige Fotos, damit du sie behalten oder löschen kannst.`
 
-## Architektur
+- `Privacy - Photo Library Additions Usage Description` (`NSPhotoLibraryAddUsageDescription`)
+  - Beispiel: `Wird für Schreibzugriff auf die Mediathek benötigt.`
 
-Die App folgt einer sauberen SwiftUI-Architektur mit drei Hauptkomponenten:
+Hinweis: Die App fragt **Read/Write** an und unterstützt **Full Access** und **Limited Access**.
 
-### PhotoLibraryService.swift
-- Verarbeitet Fotobibliothek-Autorisierung und Zugriff
-- Verwaltet Asset-Laden und Filterung
-- Behält dauerhaften "gesehen" Zustand
-- Bietet Lösch-Funktionalität
+## Testen im iOS Simulator
 
-### ContentView.swift
-- Haupt-UI mit Wisch-Gesten und Buttons
-- Verarbeitet Autorisierungszustände
-- Zeigt passende UI für verschiedene Zustände
+1. **Fotos in den Simulator bekommen**
 
-### AssetImageView.swift
-- SwiftUI-View zur Anzeige von PHAsset-Bildern
-- Verarbeitet Bild-Laden und Caching
-- Bietet Ladezustände
+   Der Simulator hat ggf. eine leere Mediathek.
 
-## Verwendung
+   - Öffne im Simulator die **Fotos** App und importiere Bilder
+   - oder ziehe Bilder per Drag & Drop in den Simulator (je nach Simulator/iOS-Version)
 
-1. Erteile Fotobibliothek-Zugriff, wenn du gefragt wirst
-2. Wische nach links oder tippe ❌ um Fotos zu überspringen
-3. Wische nach rechts oder tippe ✅ um Fotos zu löschen
-4. Gelöschte Fotos gehen zu "Kürzlich gelöscht" in Fotos
-5. Setze gesehene Fotos über die Toolbar zurück, wenn alle Fotos angesehen wurden
+2. **App starten**
 
-## Installation
+   - In Xcode ein Simulator-Gerät auswählen
+   - `Run` (Play-Button)
 
-1. Klone dieses Repository
-2. Öffne `PhotoSwift.xcodeproj` in Xcode
-3. Bauen und starte auf einem Gerät oder Simulator
+3. **Berechtigung prüfen**
 
-## Datenschutz
+   - Bei der Anfrage Zugriff erlauben
+   - Bei **Limited Access** kannst du die Auswahl anpassen; die App zeigt den Limited Picker an.
 
-- Fotos werden nur mit expliziter Benutzer-Erlaubnis zugegriffen
-- Gelöschte Fotos folgen dem iOS-Standardverhalten (gehen zu Kürzlich gelöscht)
-- Keine Daten werden außerhalb des Geräts übertragen
+## Projektstruktur (Quellcode)
+
+- `PhotoSwipeApp/ContentView.swift`
+  - Fullscreen-UI, Swipe-Gesten, Buttons
+- `PhotoSwipeApp/PhotoLibraryViewModel.swift`
+  - Berechtigungen, Laden aller erlaubten Fotos, Random-Auswahl, Keep/Delete-Logik
+- `PhotoSwipeApp/LimitedLibraryPicker.swift`
+  - Präsentiert den iOS Limited Library Picker
+- `PhotoSwipeApp/PhotoSwipeApp.swift`
+  - SwiftUI App Entry (alternativ zum von Xcode generierten Entry)
