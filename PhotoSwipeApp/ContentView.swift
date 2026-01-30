@@ -5,6 +5,7 @@ import UIKit
 struct ContentView: View {
     @StateObject private var viewModel = PhotoLibraryViewModel()
     @State private var presentLimitedPicker = false
+    @State private var confirmBatchDelete = false
 
     var body: some View {
         ZStack {
@@ -54,6 +55,48 @@ struct ContentView: View {
                         onKeep: { viewModel.keepCurrent() },
                         onDelete: { viewModel.deleteCurrent() }
                     )
+                    .overlay(alignment: .topTrailing) {
+                        HStack(spacing: 12) {
+                            Button {
+                                viewModel.resetData()
+                            } label: {
+                                Image(systemName: "arrow.counterclockwise")
+                                    .font(.system(size: 18, weight: .semibold))
+                                    .foregroundStyle(.white)
+                                    .padding(10)
+                                    .background(.black.opacity(0.35))
+                                    .clipShape(Circle())
+                            }
+
+                            Button {
+                                confirmBatchDelete = true
+                            } label: {
+                                ZStack(alignment: .topTrailing) {
+                                    Image(systemName: "trash")
+                                        .font(.system(size: 18, weight: .semibold))
+                                        .foregroundStyle(.white)
+                                        .padding(10)
+                                        .background(.black.opacity(0.35))
+                                        .clipShape(Circle())
+
+                                    if viewModel.trashCount > 0 {
+                                        Text("\(viewModel.trashCount)")
+                                            .font(.caption2.weight(.bold))
+                                            .foregroundStyle(.white)
+                                            .padding(.horizontal, 6)
+                                            .padding(.vertical, 2)
+                                            .background(Color.red)
+                                            .clipShape(Capsule())
+                                            .offset(x: 6, y: -6)
+                                    }
+                                }
+                            }
+                            .disabled(viewModel.trashCount == 0)
+                            .opacity(viewModel.trashCount == 0 ? 0.4 : 1.0)
+                        }
+                        .padding(.top, 14)
+                        .padding(.trailing, 14)
+                    }
                     .overlay(alignment: .bottom) {
                         HStack(spacing: 16) {
                             Button {
@@ -84,6 +127,14 @@ struct ContentView: View {
         }
         .task {
             await viewModel.start()
+        }
+        .alert("Trashed photos löschen?", isPresented: $confirmBatchDelete) {
+            Button("Löschen", role: .destructive) {
+                viewModel.deleteTrashed()
+            }
+            Button("Abbrechen", role: .cancel) {}
+        } message: {
+            Text("\(viewModel.trashCount) Foto(s) werden in \"Zuletzt gelöscht\" verschoben.")
         }
         .sheet(isPresented: $presentLimitedPicker) {
             LimitedLibraryPicker()

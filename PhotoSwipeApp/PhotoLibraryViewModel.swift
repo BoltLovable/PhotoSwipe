@@ -18,14 +18,23 @@ final class PhotoLibraryViewModel: ObservableObject {
     @Published private(set) var state: State = .idle
     @Published private(set) var currentImage: UIImage?
     @Published var shouldPresentLimitedPicker: Bool = false
+    @Published private(set) var trashCount: Int = 0
 
     private var remainingAssetIds: [String] = []
     private var currentAssetId: String?
+
+    private var keptAssetIds: Set<String> = []
+    private var trashedAssetIds: Set<String> = []
+
+    private let keptDefaultsKey = "photoswipe.keptAssetIds"
+    private let trashDefaultsKey = "photoswipe.trashedAssetIds"
 
     private let imageManager = PHCachingImageManager()
 
     func start() async {
         state = .requestingPermission
+
+        loadPersistedState()
 
         let status = await requestReadWriteAuthorizationIfNeeded()
         guard status == .authorized || status == .limited else {
@@ -54,6 +63,8 @@ final class PhotoLibraryViewModel: ObservableObject {
     func keepCurrent() {
         guard state == .ready else { return }
         guard let currentAssetId else { return }
+        keptAssetIds.insert(currentAssetId)
+        persistState()
         removeFromRemaining(assetId: currentAssetId)
         showNextRandomPhoto()
     }
@@ -61,23 +72,58 @@ final class PhotoLibraryViewModel: ObservableObject {
     func deleteCurrent() {
         guard state == .ready else { return }
         guard let assetId = currentAssetId else { return }
+        trashedAssetIds.insert(assetId)
+        persistState()
+        removeFromRemaining(assetId: assetId)
+        showNextRandomPhoto()
+    }
 
-        let assets = PHAsset.fetchAssets(withLocalIdentifiers: [assetId], options: nil)
-        guard let asset = assets.firstObject else {
-            removeFromRemaining(assetId: assetId)
+    func deleteTrashed() {
+        let ids = Array(trashedAssetIds)
+        guard !ids.isEmpty else { return }
+
+        let assets = PHAsset.fetchAssets(withLocalIdentifiers: ids, options: nil)
+        guard assets.count > 0 else {
+            trashedAssetIds.removeAll()
+            persistState()
+            reloadAssets()
             showNextRandomPhoto()
             return
         }
 
         PHPhotoLibrary.shared().performChanges({
-            PHAssetChangeRequest.deleteAssets([asset] as NSArray)
+            PHAssetChangeRequest.deleteAssets(assets)
         }, completionHandler: { [weak self] _, _ in
             DispatchQueue.main.async {
                 guard let self else { return }
-                self.removeFromRemaining(assetId: assetId)
-                self.showNextRandomPhoto()
+                self.trashedAssetIds.removeAll()
+                self.persistState()
+                self.reloadAssets()
+                if self.remainingAssetIds.isEmpty {
+                    self.state = .empty
+                    self.currentImage = nil
+                    self.currentAssetId = nil
+                } else {
+                    self.state = .ready
+                    self.showNextRandomPhoto()
+                }
             }
         })
+    }
+
+    func resetData() {
+        keptAssetIds.removeAll()
+        trashedAssetIds.removeAll()
+        persistState()
+        reloadAssets()
+        if remainingAssetIds.isEmpty {
+            state = .empty
+            currentImage = nil
+            currentAssetId = nil
+        } else {
+            state = .ready
+            showNextRandomPhoto()
+        }
     }
 
     func openSettings() {
@@ -90,9 +136,13 @@ final class PhotoLibraryViewModel: ObservableObject {
         var ids: [String] = []
         ids.reserveCapacity(result.count)
         result.enumerateObjects { asset, _, _ in
-            ids.append(asset.localIdentifier)
+            let id = asset.localIdentifier
+            if !self.keptAssetIds.contains(id) && !self.trashedAssetIds.contains(id) {
+                ids.append(id)
+            }
         }
         remainingAssetIds = ids
+        trashCount = trashedAssetIds.count
     }
 
     private func removeFromRemaining(assetId: String) {
@@ -153,5 +203,19 @@ final class PhotoLibraryViewModel: ObservableObject {
         @unknown default:
             return current
         }
+    }
+
+    private func loadPersistedState() {
+        let kept = UserDefaults.standard.array(forKey: keptDefaultsKey) as? [String] ?? []
+        keptAssetIds = Set(kept)
+        let trash = UserDefaults.standard.array(forKey: trashDefaultsKey) as? [String] ?? []
+        trashedAssetIds = Set(trash)
+        trashCount = trashedAssetIds.count
+    }
+
+    private func persistState() {
+        UserDefaults.standard.set(Array(keptAssetIds), forKey: keptDefaultsKey)
+        UserDefaults.standard.set(Array(trashedAssetIds), forKey: trashDefaultsKey)
+        trashCount = trashedAssetIds.count
     }
 }
